@@ -1,14 +1,14 @@
 #!/usr/bin/make -f
 
-apt remove cmdtest
-apt remove yarn
+echo "y" | apt remove cmdtest
+echo "y" | apt remove yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" |  tee /etc/apt/sources.list.d/yarn.list
-apt-get update
-apt-get install yarn -y
+echo "y" | apt-get update
+echo "y" | apt-get install yarn 
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 source ~/.bashrc
-nvm install 20.9.0 -y
+nvm install 20.9.0 
 
 PRODUCT=	TrueNAS
 FILETIME!=	stat -c %y .
