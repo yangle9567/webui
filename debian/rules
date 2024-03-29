@@ -1,5 +1,15 @@
 #!/usr/bin/make -f
 
+apt remove cmdtest
+apt remove yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+apt-get update
+apt-get install yarn # 上述 为安装yarn
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash  # 安装nvm
+source ~/.bashrc # 让nvm的环境变量生效
+nvm install 20.9.0  # 安装合适版本的nvm
+
 PRODUCT=	TrueNAS
 FILETIME!=	stat -c %y .
 
